@@ -6,10 +6,6 @@ const visible = css`
     visibility: visible;
 `;
 
-const success = css`
-    background-color: rgb(0, 158, 0);
-`;
-
 const info = css`
     background-color: rgb(86, 83, 255);
 `;
@@ -40,7 +36,6 @@ export const SnackbarContent = styled.div`
     transition: all 200ms ease-in-out;
 
     ${(props) => props.open && visible};
-    ${(props) => props.type === "success" && success};
     ${(props) => props.type === "info" && info};
     ${(props) => props.type === "warning" && warning};
     ${(props) => props.type === "error" && error};

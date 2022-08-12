@@ -111,7 +111,12 @@ class App extends Component {
             uploadedFiles: this.state.uploadedFiles.filter(
                 (file) => file.id !== id
             ),
+            message: "Imagem removida com sucesso",
+            someStateOpen: true,
+            type: "success",
         });
+
+        this.handleCloseAutomatically();
     };
 
     componentWillUnmount() {
@@ -121,12 +126,12 @@ class App extends Component {
     }
 
     handleClose = () => {
-        this.setState({ someStateOpen: false });
+        this.setState({ someStateOpen: false, message: null });
     };
 
     handleCloseAutomatically = () => {
         setTimeout(() => {
-            this.setState({ someStateOpen: false });
+            this.setState({ someStateOpen: false, message: null });
         }, 5000);
     };
 

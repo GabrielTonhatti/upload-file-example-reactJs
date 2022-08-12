@@ -9,7 +9,7 @@ const Upload = (props) => {
     const { getRootProps, getInputProps, isDragActive, isDragReject } =
         useDropzone({
             accept: {
-                "image/*": ["*"],
+                "image/*": [],
             },
             onDropAccepted: onUpload,
         });
