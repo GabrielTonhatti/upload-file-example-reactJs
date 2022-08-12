@@ -15,10 +15,22 @@ export const DropContainer = styled.div.attrs({
     border-radius: 4px;
     cursor: pointer;
 
+    padding: 32px;
+    font-size: 2rem;
     transition: height 0.2s ease;
 
     ${(props) => props.isDragActive && dragActive};
     ${(props) => props.isDragReject && dragReject};
+
+    @media (max-width: 600px) {
+        font-size: 1rem;
+        padding: 0px;
+    }
+
+    @media (max-width: 300px) {
+        font-size: 12px;
+        padding: 0px;
+    }
 `;
 
 const messageColors = {

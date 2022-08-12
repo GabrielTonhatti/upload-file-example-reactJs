@@ -23,8 +23,12 @@ export const FileInfo = styled.div`
         display: flex;
         flex-direction: column;
 
+        strong {
+            font-size: 1rem;
+        }
+
         span {
-            font-size: 12px;
+            font-size: 14px;
             color: #999;
             margin-top: 5px;
 
@@ -36,16 +40,41 @@ export const FileInfo = styled.div`
                 cursor: pointer;
             }
         }
+
+        @media (max-width: 600px) {
+            strong {
+                font-size: 14px;
+            }
+
+            span {
+                font-size: 12px;
+                color: #999;
+                margin-top: 5px;
+
+                button {
+                    border: 0;
+                    background: transparent;
+                    color: #e57878;
+                    margin-left: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
     }
 `;
 
 export const Preview = styled.div`
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     border-radius: 5px;
     background-image: url(${(props) => props.src});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
     margin-right: 10px;
+
+    @media (max-width: 600px) {
+        width: 36px;
+        height: 36px;
+    }
 `;
