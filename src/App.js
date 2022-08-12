@@ -6,10 +6,14 @@ import Upload from "./components/Upload";
 import { Container, Content } from "./styles";
 import GlobalStyle from "./styles/global";
 import api from "./services/api";
+import Snackbar from "./components/snackbar/Snackbar";
 
 class App extends Component {
     state = {
         uploadedFiles: [],
+        someStateOpen: false,
+        message: null,
+        type: null,
     };
 
     async componentDidMount() {
@@ -78,12 +82,26 @@ class App extends Component {
                     id: response.data._id,
                     url: response.data.url,
                 });
+
+                this.setState({
+                    message: "Imagem importada com sucesso",
+                    someStateOpen: true,
+                    type: "success",
+                });
             })
-            .catch(() => {
+            .catch((error) => {
+                this.setState({
+                    message: error.response.data.message,
+                    someStateOpen: true,
+                    type: "error",
+                });
+
                 this.updateFile(uploadedFile.id, {
                     error: true,
                 });
             });
+
+        this.handleCloseAutomatically();
     };
 
     handleDelete = async (id) => {
@@ -102,8 +120,18 @@ class App extends Component {
         );
     }
 
+    handleClose = () => {
+        this.setState({ someStateOpen: false });
+    };
+
+    handleCloseAutomatically = () => {
+        setTimeout(() => {
+            this.setState({ someStateOpen: false });
+        }, 5000);
+    };
+
     render() {
-        const { uploadedFiles } = this.state;
+        const { uploadedFiles, someStateOpen, message, type } = this.state;
 
         return (
             <Container>
@@ -117,6 +145,16 @@ class App extends Component {
                     )}
                 </Content>
                 <GlobalStyle />
+
+                {message && (
+                    <Snackbar
+                        type={type}
+                        open={someStateOpen}
+                        onClose={this.handleClose}
+                    >
+                        {message}
+                    </Snackbar>
+                )}
             </Container>
         );
     }
