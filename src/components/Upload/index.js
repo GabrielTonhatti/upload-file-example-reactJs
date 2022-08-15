@@ -1,7 +1,13 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
+import { IoMdCloudUpload } from "react-icons/io";
 
-import { DropContainer, UploadMessage } from "./styles";
+import {
+    AcceptedFiles,
+    DropContainer,
+    MaxFileSize,
+    UploadMessage,
+} from "./styles";
 
 const Upload = (props) => {
     const { onUpload } = props;
@@ -40,6 +46,11 @@ const Upload = (props) => {
         >
             <input {...getInputProps()} />
             {renderDragMessage(isDragActive, isDragReject)}
+            <MaxFileSize>Arquivos de no máximo 2 MB.</MaxFileSize>
+            <AcceptedFiles>
+                .png, .jpeg, .jpg, .pjpeg, .gif
+                <IoMdCloudUpload className="icon" />
+            </AcceptedFiles>
         </DropContainer>
     );
 };

@@ -41,8 +41,63 @@ const messageColors = {
 
 export const UploadMessage = styled.p`
     display: flex;
-    color: ${(props) => messageColors[props.type || "default"]};
+    color: ${(props) => messageColors[props.type || "000"]};
     justify-content: center;
     align-items: center;
     padding: 15px 0;
+`;
+
+export const MaxFileSize = styled.span`
+    display: flex;
+    font-size: 14px;
+    color: ${(props) => messageColors["default"]};
+    margin-top: -20px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+
+    @media (max-width: 600px) {
+        font-size: 10px;
+    }
+
+    @media (max-width: 300px) {
+        font-size: 8px;
+    }
+`;
+
+export const AcceptedFiles = styled.p`
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: #7159c1;
+    margin-top: -20px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+
+    .icon {
+        font-size: 3rem;
+        margin: 1rem;
+        margin-top: 30px;
+        margin-bottom: -30px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 10px;
+
+        .icon {
+            font-size: 2rem;
+            margin: 1rem;
+            margin-top: 10px;
+            margin-bottom: -10px;
+        }
+    }
+
+    @media (max-width: 300px) {
+        font-size: 6px;
+
+        .icon {
+            font-size: 1rem;
+        }
+    }
 `;
